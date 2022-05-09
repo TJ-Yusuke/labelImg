@@ -49,6 +49,18 @@ from libs.hashableQListWidgetItem import HashableQListWidgetItem
 
 __appname__ = 'labelImg'
 
+styleSheet = '''
+QWidget {
+    background-color: #000;
+    color: #fff;
+} 
+QScrollBar {
+    background: #4d4d4d;
+}
+ QListView::item:selected {
+    background : green;
+}
+'''
 
 class WindowMixin(object):
 
@@ -75,6 +87,8 @@ class MainWindow(QMainWindow, WindowMixin):
     def __init__(self, default_filename=None, default_prefdef_class_file=None, default_save_dir=None):
         super(MainWindow, self).__init__()
         self.setWindowTitle(__appname__)
+
+        self.setStyleSheet(styleSheet)
 
         # Load setting in the main thread
         self.settings = Settings()
